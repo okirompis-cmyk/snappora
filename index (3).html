@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SNAPORA - Healthy Snack | Keripik Buah & Sayur Mix Premium</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Caveat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: { 50:'#FFF9E6',100:'#FFF0BF',200:'#FFE080',300:'#FFD040',400:'#FFC107',500:'#D4A017',600:'#B8860B',700:'#8B6914',800:'#5E4B1A',900:'#3A2E10' },
+                        dark: { 50:'#2A2A2A',100:'#232323',200:'#1E1E1E',300:'#1A1A1A',400:'#151515',500:'#111111',600:'#0D0D0D',700:'#0A0A0A',800:'#070707',900:'#000000' }
+                    },
+                    fontFamily: { display:['Playfair Display','serif'], body:['Inter','sans-serif'], hand:['Caveat','cursive'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Inter',sans-serif;background:#0A0A0A;color:#E5E5E5;overflow-x:hidden}
+        ::-webkit-scrollbar{width:6px}
+        ::-webkit-scrollbar-track{background:#0A0A0A}
+        ::-webkit-scrollbar-thumb{background:#D4A017;border-radius:3px}
+        @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+        @keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
+        @keyframes fadeInUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+        @keyframes pulse-gold{0%,100%{box-shadow:0 0 20px rgba(212,160,23,0.3)}50%{box-shadow:0 0 40px rgba(212,160,23,0.6)}}
+        @keyframes spin-slow{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+        @keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+        @keyframes bounce-subtle{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+        .animate-float{animation:float 4s ease-in-out infinite}
+        .animate-shimmer{background:linear-gradient(90deg,#D4A017,#FFD040,#D4A017,#FFD040,#D4A017);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 4s linear infinite}
+        .animate-fade-in-up{animation:fadeInUp .8s ease-out forwards;opacity:0}
+        .animate-pulse-gold{animation:pulse-gold 2s ease-in-out infinite}
+        .animate-spin-slow{animation:spin-slow 20s linear infinite}
+        .animate-marquee{animation:marquee 20s linear infinite}
+        .animate-bounce-subtle{animation:bounce-subtle 2s ease-in-out infinite}
+        .delay-100{animation-delay:.1s}.delay-200{animation-delay:.2s}.delay-300{animation-delay:.3s}.delay-400{animation-delay:.4s}.delay-500{animation-delay:.5s}
+        .gold-text{background:linear-gradient(135deg,#FFD040,#D4A017,#B8860B,#D4A017,#FFD040);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .gold-border-glow{border:1px solid rgba(212,160,23,0.3);box-shadow:0 0 15px rgba(212,160,23,0.1),inset 0 0 15px rgba(212,160,23,0.05)}
+        .product-card{transition:all .5s cubic-bezier(.4,0,.2,1);border:1px solid rgba(212,160,23,0.15)}
+        .product-card:hover{transform:translateY(-10px);border-color:rgba(212,160,23,0.5);box-shadow:0 25px 60px rgba(212,160,23,0.15),0 0 30px rgba(212,160,23,0.1)}
+        .product-card:hover .product-img{transform:scale(1.08)}
+        .product-card:hover .order-btn{background:linear-gradient(135deg,#D4A017,#FFD040);color:#0A0A0A}
+        .nav-glass{background:rgba(10,10,10,0.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(212,160,23,0.15)}
+        .hero-pattern{background-image:radial-gradient(circle at 20% 50%,rgba(212,160,23,0.08) 0%,transparent 50%),radial-gradient(circle at 80% 20%,rgba(212,160,23,0.05) 0%,transparent 40%),radial-gradient(circle at 60% 80%,rgba(184,134,11,0.06) 0%,transparent 45%)}
+        .stars-bg{background-image:radial-gradient(2px 2px at 20px 30px,rgba(212,160,23,0.3),transparent),radial-gradient(2px 2px at 40px 70px,rgba(212,160,23,0.2),transparent),radial-gradient(1px 1px at 90px 40px,rgba(212,160,23,0.4),transparent),radial-gradient(1px 1px at 130px 80px,rgba(212,160,23,0.2),transparent),radial-gradient(2px 2px at 160px 30px,rgba(212,160,23,0.3),transparent);background-size:200px 100px}
+        .wave-separator{background:url("data:image/svg+xml,%3Csvg viewBox='0 0 1200 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,40 C300,100 400,0 600,40 C800,80 900,0 1200,40 L1200,120 L0,120 Z' fill='%230A0A0A'/%3E%3C/svg%3E") no-repeat bottom center;background-size:cover}
+        .wa-float{position:fixed;bottom:24px;right:24px;z-index:999;animation:bounce-subtle 2s ease-in-out infinite;transition:transform .3s}
+        .wa-float:hover{transform:scale(1.1) translateY(-3px)}
+        .section-divider{height:1px;background:linear-gradient(90deg,transparent,rgba(212,160,23,0.4),transparent)}
+        .healthy-badge{background:linear-gradient(135deg,rgba(34,197,94,0.2),rgba(34,197,94,0.05));border:1px solid rgba(34,197,94,0.3)}
+        .toast{transform:translateX(120%);transition:transform .5s cubic-bezier(.4,0,.2,1)}
+        .toast.show{transform:translateX(0)}
+        .mobile-menu{transform:translateX(100%);transition:transform .4s cubic-bezier(.4,0,.2,1)}
+        .mobile-menu.open{transform:translateX(0)}
+        .qty-btn{width:32px;height:32px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(212,160,23,0.3);border-radius:6px;color:#D4A017;cursor:pointer;transition:all .2s;background:transparent;font-size:16px}
+        .qty-btn:hover{background:rgba(212,160,23,0.15);border-color:#D4A017}
+        .map-container{border:1px solid rgba(212,160,23,0.2);border-radius:16px;overflow:hidden}
+        html{scroll-behavior:smooth}
+        .img-zoom{overflow:hidden}
+        .img-zoom img{transition:transform .7s cubic-bezier(.4,0,.2,1)}
+        .img-zoom:hover img{transform:scale(1.1)}
+    </style>
+</head>
+<body class="stars-bg">
+
+    <!-- Toast -->
+    <div id="toast" class="toast fixed top-24 right-4 z-[1000] bg-dark-200 border border-green-500/30 rounded-xl px-6 py-4 flex items-center gap-3 shadow-2xl">
+        <span class="iconify text-green-400 text-xl" data-icon="mdi:check-circle"></span>
+        <span id="toast-message" class="text-sm text-green-300">Produk ditambahkan!</span>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="nav-glass fixed top-0 left-0 right-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 sm:h-20">
+                <a href="#beranda" class="flex items-center gap-2 sm:gap-3">
+                    <span class="text-2xl">👑</span>
+                    <span class="font-display text-xl sm:text-2xl font-bold gold-text tracking-wider">SNAPORA</span>
+                </a>
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#beranda" class="text-sm font-medium text-gray-300 hover:text-gold-500 transition-colors">Beranda</a>
+                    <a href="#produk" class="text-sm font-medium text-gray-300 hover:text-gold-500 transition-colors">Produk</a>
+                    <a href="#tentang" class="text-sm font-medium text-gray-300 hover:text-gold-500 transition-colors">Tentang</a>
+                    <a href="#testimoni" class="text-sm font-medium text-gray-300 hover:text-gold-500 transition-colors">Testimoni</a>
+                    <a href="#lokasi" class="text-sm font-medium text-gray-300 hover:text-gold-500 transition-colors">Lokasi</a>
+                    <a href="https://wa.me/6282136265841?text=Halo%20SNAPORA,%20saya%20ingin%20order%20Healthy%20Snack" target="_blank" class="px-5 py-2.5 bg-gradient-to-r from-gold-600 to-gold-500 text-dark-900 font-semibold text-sm rounded-lg hover:shadow-lg hover:shadow-gold-500/25 transition-all hover:scale-105">Order Sekarang</a>
+                </div>
+                <button class="md:hidden text-gold-500 p-2" onclick="toggleMenu()">
+                    <span class="iconify text-2xl" data-icon="mdi:menu"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="mobile-menu fixed inset-0 z-[60] bg-dark-900/98 backdrop-blur-xl">
+        <div class="flex flex-col h-full p-6">
+            <div class="flex items-center justify-between mb-12">
+                <div class="flex items-center gap-3">
+                    <span class="text-2xl">👑</span>
+                    <span class="font-display text-2xl font-bold gold-text">SNAPORA</span>
+                </div>
+                <button onclick="toggleMenu()" class="text-gold-500 p-2"><span class="iconify text-2xl" data-icon="mdi:close"></span></button>
+            </div>
+            <div class="flex flex-col gap-6">
+                <a href="#beranda" onclick="toggleMenu()" class="text-2xl font-display font-medium text-gray-200 hover:text-gold-500 transition-colors">Beranda</a>
+                <a href="#produk" onclick="toggleMenu()" class="text-2xl font-display font-medium text-gray-200 hover:text-gold-500 transition-colors">Produk</a>
+                <a href="#tentang" onclick="toggleMenu()" class="text-2xl font-display font-medium text-gray-200 hover:text-gold-500 transition-colors">Tentang</a>
+                <a href="#testimoni" onclick="toggleMenu()" class="text-2xl font-display font-medium text-gray-200 hover:text-gold-500 transition-colors">Testimoni</a>
+                <a href="#lokasi" onclick="toggleMenu()" class="text-2xl font-display font-medium text-gray-200 hover:text-gold-500 transition-colors">Lokasi</a>
+            </div>
+            <div class="mt-auto flex flex-col gap-3">
+                <a href="https://wa.me/6282136265841?text=Halo%20SNAPORA,%20saya%20ingin%20order%20Healthy%20Snack" target="_blank" class="w-full py-4 bg-gradient-to-r from-gold-600 to-gold-500 text-dark-900 font-bold text-center rounded-xl text-lg">Order Sekarang</a>
+                <a href="https://www.instagram.com/_healthy.snack_/" target="_blank" class="w-full py-4 border border-gold-500/30 text-gold-500 font-bold text-center rounded-xl text-lg hover:bg-gold-500/10 transition-colors">Follow Instagram</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <section id="beranda" class="relative min-h-screen flex items-center hero-pattern pt-20">
+        <div class="absolute top-32 left-10 text-gold-500/20 text-6xl animate-float">⭐</div>
+        <div class="absolute top-48 right-16 text-gold-500/15 text-4xl animate-float delay-300">✦</div>
+        <div class="absolute bottom-32 left-20 text-gold-500/10 text-5xl animate-float delay-500">★</div>
+        <div class="absolute bottom-48 right-24 text-gold-500/20 text-3xl animate-float delay-200">⭐</div>
+        <div class="absolute top-1/2 right-10 -translate-y-1/2 hidden lg:block">
+            <div class="animate-spin-slow w-72 h-72 rounded-full border border-gold-500/10"></div>
+        </div>
+        <div class="absolute top-1/2 right-10 -translate-y-1/2 hidden lg:block">
+            <div class="animate-spin-slow w-96 h-96 rounded-full border border-gold-500/5" style="animation-direction:reverse;animation-duration:30s"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="text-center lg:text-left">
+                    <div class="animate-fade-in-up">
+                        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full healthy-badge mb-6">
+                            <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+                            <span class="text-green-300 text-xs font-semibold uppercase tracking-widest">100% Natural & Healthy</span>
+                        </div>
+                    </div>
+                    <h1 class="animate-fade-in-up delay-100 font-display text-4xl sm:text-5xl lg:text-7xl font-bold leading-[1.1] mb-6">
+                        <span class="text-white">HEALTHY</span><br>
+                        <span class="animate-shimmer">SNACK</span>
+                    </h1>
+                    <p class="animate-fade-in-up delay-200 text-gray-400 text-base sm:text-lg max-w-lg mx-auto lg:mx-0 mb-4 leading-relaxed">
+                        Keripik buah & sayur mix premium yang renyah, gurih, dan sehat. Beragam varian dalam satu kemasan — tanpa pengawet, tanpa MSG.
+                    </p>
+                    <p class="animate-fade-in-up delay-300 font-hand text-gold-400 text-xl sm:text-2xl mb-8">
+                        ~ oleh SNAPORA ~
+                    </p>
+                    <div class="animate-fade-in-up delay-400 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="#produk" class="group px-8 py-4 bg-gradient-to-r from-gold-600 to-gold-500 text-dark-900 font-bold rounded-xl hover:shadow-xl hover:shadow-gold-500/25 transition-all hover:scale-105 flex items-center justify-center gap-2">
+                            Lihat Menu
+                            <span class="iconify text-lg group-hover:translate-x-1 transition-transform" data-icon="mdi:arrow-right"></span>
+                        </a>
+                        <a href="https://wa.me/6282136265841?text=Halo%20SNAPORA,%20saya%20ingin%20order%20Healthy%20Snack" target="_blank" class="px-8 py-4 border border-gold-500/30 text-gold-500 font-bold rounded-xl hover:bg-gold-500/10 hover:border-gold-500/50 transition-all flex items-center justify-center gap-2">
+                            <span class="iconify text-xl" data-icon="mdi:whatsapp"></span>
+                            WhatsApp Order
+                        </a>
+                    </div>
+                    <div class="animate-fade-in-up delay-500 flex gap-8 sm:gap-12 mt-10 justify-center lg:justify-start">
+                        <div><div class="text-2xl sm:text-3xl font-bold gold-text">20+</div><div class="text-xs text-gray-500 mt-1">Varian Mix</div></div>
+                        <div><div class="text-2xl sm:text-3xl font-bold gold-text">5K+</div><div class="text-xs text-gray-500 mt-1">Pelanggan Puas</div></div>
+                        <div><div class="text-2xl sm:text-3xl font-bold gold-text">⭐4.9</div><div class="text-xs text-gray-500 mt-1">Rating</div></div>
+                    </div>
+                </div>
+
+                <!-- Hero Logo Image -->
+                <div class="animate-fade-in-up delay-300 relative flex justify-center">
+                    <div class="relative">
+                        <div class="w-72 h-72 sm:w-80 sm:h-80 lg:w-[420px] lg:h-[420px] rounded-full overflow-hidden border-2 border-gold-500/30 shadow-2xl shadow-gold-500/10 animate-pulse-gold bg-white">
+                            <img src="https://z-cdn-media.chatglm.cn/files/3ae1fc83-4f28-4a28-9dc2-3caf2eaac906.jpeg?auth_key=1876022998-87d8930f3aa849b5a2cf1b6390920bdb-0-7e0c8528510e3a99c52801551bd3a67f" alt="HEALTHY SNACK Logo" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute -top-4 -right-4 bg-dark-300 border border-gold-500/30 rounded-2xl px-4 py-3 animate-float shadow-xl">
+                            <div class="text-gold-400 text-xs font-bold">🔥 BEST SELLER</div>
+                        </div>
+                        <div class="absolute -bottom-2 -left-6 bg-dark-300 border border-green-500/30 rounded-2xl px-4 py-3 animate-float delay-300 shadow-xl">
+                            <div class="text-green-400 text-xs font-bold">🌿 NO PRESERVATIVE</div>
+                        </div>
+                        <div class="absolute top-1/2 -right-8 bg-dark-300 border border-gold-500/30 rounded-2xl px-4 py-3 animate-float delay-500 shadow-xl">
+                            <div class="text-gold-300 text-xs font-bold">👑 PREMIUM</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-0 left-0 right-0 h-20 wave-separator opacity-50"></div>
+    </section>
+
+    <!-- Marquee -->
+    <div class="bg-gradient-to-r from-gold-700 via-gold-500 to-gold-700 py-3 overflow-hidden">
+        <div class="animate-marquee whitespace-nowrap flex">
+            <span class="text-dark-900 font-bold text-sm mx-8">⭐ HEALTHY SNACK</span>
+            <span class="text-dark-900 font-bold text-sm mx-8">👑 SNAPORA PREMIUM</span>
+            <span class="text-dark-900 font-bold text-sm mx-8">🌿 TANPA PENGAWET</span>
+            <span class="text-dark-900 font-bold text-sm mx-8">🥕 BUAH & SAYUR MIX</span>
+            <span class="text-dark-900 font-bold text-sm mx-8">🔥 RENYAH & GURIH</span>
+            <span class="text-dark-900 font-bold text-sm mx-8">📦 GRATIS ONGKIR*</span>
+            <span class="text-dark-900 font-bold text-sm mx-8">⭐ HEALTHY SNACK</span>
+            <span class="text-dark-900 font-bold text-sm mx-8">👑 SNAPORA PREMIUM</span>
+            <span class="text-dark-900 font-bold text-sm mx-8">🌿 TANPA PENGAWET</span>
+            <span class="text-dark-900 font-bold text-sm mx-8">🥕 BUAH & SAYUR MIX</span>
+            <span class="text-dark-900 font-bold text-sm mx-8">🔥 RENYAH & GURIH</span>
+            <span class="text-dark-900 font-bold text-sm mx-8">📦 GRATIS ONGKIR*</span>
+        </div>
+    </div>
+
+    <!-- Products — Hanya 3 -->
+    <section id="produk" class="py-16 sm:py-24 relative">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-14">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full gold-border-glow mb-4">
+                    <span class="text-gold-400 text-xs font-semibold uppercase tracking-widest">Menu Kami</span>
+                </div>
+                <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+                    <span class="text-white">KERIPIK BUAH & SAYUR </span>
+                    <span class="gold-text">MIX</span>
+                </h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Pilih ukuran yang sesuai kebutuhanmu — semua varian buah & sayur dalam satu kemasan</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+
+                <!-- Produk 1 — Mix 100g -->
+                <div class="product-card bg-dark-200 rounded-2xl overflow-hidden group">
+                    <div class="relative img-zoom aspect-square bg-dark-100">
+                        <img src="https://z-cdn-media.chatglm.cn/files/06a8f73c-baf3-4ff5-9220-183c3c441a21.jpeg?auth_key=1876022520-f9355a68f2aa4a23a4aa07de86dbb8d2-0-b45c4f8bda5a69722762d67578b78e95" alt="Keripik Buah Sayur Mix 100g" class="product-img w-full h-full object-cover">
+                        <div class="absolute top-3 right-3 px-2.5 py-1 healthy-badge rounded-lg text-[10px] font-bold text-green-300 uppercase">Healthy</div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-display font-bold text-white text-lg mb-1">Keripik Buah & Sayur Mix</h3>
+                        <p class="text-gold-400/70 text-xs font-semibold uppercase tracking-wider mb-2">Piring • 100 gram</p>
+                        <p class="text-gray-500 text-sm mb-4 leading-relaxed">Pisang, wortel, ubi ungu, pare & berbagai sayuran segar lainnya dalam satu piring</p>
+                        <div class="flex items-end gap-3 mb-4">
+                            <span class="text-gold-400 font-bold text-2xl">Rp 25.000</span>
+                            <span class="text-gray-600 text-sm line-through mb-0.5">Rp 35.000</span>
+                        </div>
+                        <div class="flex gap-2">
+                            <button onclick="orderProduct('Keripik Buah & Sayur Mix - 100 gram', 15000)" class="order-btn flex-1 py-3 bg-gold-500/10 text-gold-400 text-sm font-bold rounded-xl border border-gold-500/20 transition-all hover:bg-gold-500 hover:text-dark-900 flex items-center justify-center gap-2">
+                                <span class="iconify" data-icon="mdi:whatsapp"></span>
+                                Order
+                            </button>
+                            <button onclick="addToCart('Keripik Buah & Sayur Mix - 100 gram', 15000)" class="py-3 px-4 bg-dark-100 text-gray-400 rounded-xl border border-gray-700/50 hover:border-gold-500/30 hover:text-gold-400 transition-all">
+                                <span class="iconify text-lg" data-icon="mdi:cart-plus"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Produk 2 — Mix 150g -->
+                <div class="product-card bg-dark-200 rounded-2xl overflow-hidden group">
+                    <div class="relative img-zoom aspect-square bg-dark-100">
+                        <img src="https://z-cdn-media.chatglm.cn/files/0c4decc4-2207-4310-a87b-99d27298c2dd.jpeg?auth_key=1876022520-57ddf9461547462d9fa6e6a7f1a25228-0-f5f8042a6739327226fe9ff6ae1bb03e" alt="Keripik Buah Sayur Mix 150g" class="product-img w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 px-2.5 py-1 bg-red-500/90 rounded-lg text-[10px] font-bold text-white uppercase">Best Seller</div>
+                        <div class="absolute top-3 right-3 px-2.5 py-1 healthy-badge rounded-lg text-[10px] font-bold text-green-300 uppercase">Healthy</div>
+                    </div>
+                    <div class="p-5">
+                        <h3 class="font-display font-bold text-white text-lg mb-1">Keripik Buah & Sayur Mix</h3>
+                        <p class="text-gold-400/70 text-xs font-semibold uppercase tracking-wider mb-2">Kemasan Pack • 150 gram</p>
+                        <p class="text-gray-500 text-sm mb-4 leading-relaxed">Labu, wortel, kiwi, fig, stroberi & buah-buahan premium dalam kemasan praktis</p>
+                        <div class="flex items-end gap-3 mb-4">
+                            <span class="text-gold-400 font-bold text-2xl">Rp 45.000</span>
+                            <span class="text-gray-600 text-sm line-through mb-0.5">Rp 55.000</span>
+                        </div>
+                        <div class="flex gap-2">
+                            <button onclick="orderProduct('Keripik Buah & Sayur Mix - 150 gram', 24000)" class="order-btn flex-1 py-3 bg-gold-500/10 text-gold-400 text-sm font-bold rounded-xl border border-gold-500/20 transition-all hover:bg-gold-500 hover:text-dark-900 flex items-center justify-center gap-2">
+                                <span class="iconify" data-icon="mdi:whatsapp"></span>
+                                Order
+                            </button>
+                            <button onclick="addToCart('Keripik Buah & Sayur Mix - 150 gram', 24000)" class="py-3 px-4 bg-dark-100 text-gray-400 rounded-xl border border-gray-700/50 hover:border-gold-500/30 hover:text-gold-400 transition-all">
+                                <span class="iconify text-lg" data-icon="mdi:cart-plus"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Produk 3 — Paket Hemat 3 Pack -->
+                <div class="product-card bg-dark-200 rounded-2xl overflow-hidden group sm:col-span-2 lg:col-span-1">
+                    <div class="relative img-zoom aspect-square bg-dark-100">
+                        <img src="https://z-cdn-media.chatglm.cn/files/0c4decc4-2207-4310-a87b-99d27298c2dd.jpeg?auth_key=1876022520-57ddf9461547462d9fa6e6a7f1a25228-0-f5f8042a6739327226fe9ff6ae1bb03e" alt="Paket Hemat 5 Pack" class="product-img w-full h-full object-cover">
+                        <div class="absolute top-3 left-3 px-2.5 py-1 bg-gold-500/90 rounded-lg text-[10px] font-bold text-dark-900 uppercase">🎁 Hemat 40%</div>
+                        <div class="absolute top-3 right-3 px-2.5 py-1 healthy-badge rounded-lg text-[10px] font-bold text-green-300 uppercase">Healthy</div>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="font-display font-bold text-white text-lg mb-1">Paket Hemat 3 Pack</h3>
+                        <p class="text-gold-400/70 text-xs font-semibold uppercase tracking-wider mb-2">3 Kemasan Mix @100g</p>
+                        <p class="text-gray-500 text-sm mb-4 leading-relaxed">3 pack buah & sayur mix bebas pilih varian — paling hemat untuk keluarga & sahabat</p>
+                        <div class="flex items-end gap-3 mb-4">
+                            <span class="text-gold-400 font-bold text-2xl">Rp 85.000</span>
+                            <span class="text-gray-600 text-sm line-through mb-0.5">Rp 105.000</span>
+                            <span class="px-2 py-0.5 bg-red-500/20 text-red-400 text-[10px] font-bold rounded-md uppercase">Save 40%</span>
+                        </div>
+                        <div class="flex gap-2">
+                            <button onclick="orderProduct('Paket Hemat 3 Pack Mix', 55000)" class="order-btn flex-1 py-3 bg-gold-500/10 text-gold-400 text-sm font-bold rounded-xl border border-gold-500/20 transition-all hover:bg-gold-500 hover:text-dark-900 flex items-center justify-center gap-2">
+                                <span class="iconify" data-icon="mdi:whatsapp"></span>
+                                Order
+                            </button>
+                            <button onclick="addToCart('Paket Hemat 3 Pack Mix', 55000)" class="py-3 px-4 bg-dark-100 text-gray-400 rounded-xl border border-gray-700/50 hover:border-gold-500/30 hover:text-gold-400 transition-all">
+                                <span class="iconify text-lg" data-icon="mdi:cart-plus"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider max-w-4xl mx-auto"></div>
+
+    <!-- About -->
+    <section id="tentang" class="py-16 sm:py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="relative">
+                    <div class="rounded-3xl overflow-hidden gold-border-glow">
+                        <img src="https://z-cdn-media.chatglm.cn/files/3ae1fc83-4f28-4a28-9dc2-3caf2eaac906.jpeg?auth_key=1876022998-87d8930f3aa849b5a2cf1b6390920bdb-0-7e0c8528510e3a99c52801551bd3a67f" alt="Tentang SNAPORA" class="w-full h-80 sm:h-[450px] object-cover">
+                    </div>
+                    <div class="absolute -bottom-6 -right-4 sm:right-6 bg-dark-200 gold-border-glow rounded-2xl p-5 shadow-2xl">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 bg-gold-500/20 rounded-xl flex items-center justify-center"><span class="text-2xl">🌿</span></div>
+                            <div><div class="text-gold-400 font-bold text-lg">100% Alami</div><div class="text-gray-500 text-xs">Tanpa bahan kimia</div></div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full gold-border-glow mb-4">
+                        <span class="text-gold-400 text-xs font-semibold uppercase tracking-widest">Tentang Kami</span>
+                    </div>
+                    <h2 class="font-display text-3xl sm:text-4xl font-bold mb-6">
+                        <span class="text-white">Mengapa </span><span class="gold-text">SNAPORA</span><span class="text-white">?</span>
+                    </h2>
+                    <p class="text-gray-400 leading-relaxed mb-6">
+                        SNAPORA hadir dengan misi menghadirkan camilan sehat tanpa mengorbankan rasa. Keripik buah & sayur mix kami dibuat dari bahan-bahan segar pilihan — pisang, wortel, ubi ungu, pare, labu, kiwi, stroberi, dan banyak lagi — diolah dengan teknologi vacuum frying untuk menjaga nutrisi dan kerenyahan alami.
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="flex items-start gap-3 p-4 bg-dark-200 rounded-xl border border-gray-800/50">
+                            <div class="w-10 h-10 bg-green-500/15 rounded-lg flex items-center justify-center shrink-0 mt-0.5"><span class="iconify text-green-400 text-lg" data-icon="mdi:leaf"></span></div>
+                            <div><h4 class="text-white font-semibold text-sm mb-1">Tanpa Pengawet</h4><p class="text-gray-500 text-xs">Bahan alami murni tanpa bahan kimia berbahaya</p></div>
+                        </div>
+                        <div class="flex items-start gap-3 p-4 bg-dark-200 rounded-xl border border-gray-800/50">
+                            <div class="w-10 h-10 bg-blue-500/15 rounded-lg flex items-center justify-center shrink-0 mt-0.5"><span class="iconify text-blue-400 text-lg" data-icon="mdi:water-off"></span></div>
+                            <div><h4 class="text-white font-semibold text-sm mb-1">Tanpa MSG</h4><p class="text-gray-500 text-xs">Rasa gurih alami dari bahan-bahan pilihan</p></div>
+                        </div>
+                        <div class="flex items-start gap-3 p-4 bg-dark-200 rounded-xl border border-gray-800/50">
+                            <div class="w-10 h-10 bg-orange-500/15 rounded-lg flex items-center justify-center shrink-0 mt-0.5"><span class="iconify text-orange-400 text-lg" data-icon="mdi:fire"></span></div>
+                            <div><h4 class="text-white font-semibold text-sm mb-1">Vacuum Frying</h4><p class="text-gray-500 text-xs">Teknologi goreng hampa, minim minyak</p></div>
+                        </div>
+                        <div class="flex items-start gap-3 p-4 bg-dark-200 rounded-xl border border-gray-800/50">
+                            <div class="w-10 h-10 bg-gold-500/15 rounded-lg flex items-center justify-center shrink-0 mt-0.5"><span class="iconify text-gold-400 text-lg" data-icon="mdi:shield-check"></span></div>
+                            <div><h4 class="text-white font-semibold text-sm mb-1">Halal & PIRT</h4><p class="text-gray-500 text-xs">Terjamin halal dan bersertifikat resmi</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider max-w-4xl mx-auto"></div>
+
+  
+
+    <div class="section-divider max-w-4xl mx-auto"></div>
+
+    <!-- CTA -->
+    <section class="py-16 sm:py-20">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="relative bg-gradient-to-br from-dark-200 via-dark-300 to-dark-200 rounded-3xl p-8 sm:p-12 gold-border-glow overflow-hidden">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-gold-500/5 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+                <div class="absolute bottom-0 left-0 w-48 h-48 bg-gold-500/5 rounded-full translate-y-1/2 -translate-x-1/2"></div>
+                <div class="relative text-center">
+                    <span class="text-4xl mb-4 block">👑</span>
+                    <h2 class="font-display text-3xl sm:text-4xl font-bold mb-4"><span class="text-white">Order </span><span class="gold-text">Sekarang</span></h2>
+                    <p class="text-gray-400 max-w-xl mx-auto mb-8">Dapatkan Keripik Buah & Sayur Mix terbaik langsung dari SNAPORA</p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="https://wa.me/6282136265841?text=Halo%20SNAPORA,%20saya%20ingin%20order%20Healthy%20Snack" target="_blank" class="px-8 py-4 bg-gradient-to-r from-green-600 to-green-500 text-white font-bold rounded-xl hover:shadow-xl hover:shadow-green-500/25 transition-all hover:scale-105 flex items-center justify-center gap-2">
+                            <span class="iconify text-xl" data-icon="mdi:whatsapp"></span>
+                            Chat WhatsApp: 0821-3626-5841
+                        </a>
+                        <a href="https://www.instagram.com/_healthy.snack_/" target="_blank" class="px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-500 text-white font-bold rounded-xl hover:shadow-xl hover:shadow-pink-500/25 transition-all hover:scale-105 flex items-center justify-center gap-2">
+                            <span class="iconify text-xl" data-icon="mdi:instagram"></span>
+                            @healthy.snack_
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location -->
+    <section id="lokasi" class="py-16 sm:py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-14">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full gold-border-glow mb-4">
+                    <span class="text-gold-400 text-xs font-semibold uppercase tracking-widest">Lokasi Kami</span>
+                </div>
+                <h2 class="font-display text-3xl sm:text-4xl font-bold mb-4"><span class="text-white">Temukan </span><span class="gold-text">Toko Kami</span></h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Datang langsung ke toko SNAPORA atau pesan online untuk pengiriman ke seluruh Indonesia</p>
+            </div>
+            <div class="grid lg:grid-cols-5 gap-8">
+                <div class="lg:col-span-2 space-y-6">
+                    <div class="bg-dark-200 rounded-2xl p-6 border border-gray-800/50 hover:border-green-500/20 transition-all group">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-green-500/15 rounded-xl flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform"><span class="iconify text-green-400 text-2xl" data-icon="mdi:whatsapp"></span></div>
+                            <div><h4 class="text-white font-semibold mb-1">WhatsApp</h4><a href="https://wa.me/6282136265841" target="_blank" class="text-green-400 text-sm hover:underline">0821-3626-5841</a><p class="text-gray-500 text-xs mt-1">Klik untuk chat langsung</p></div>
+                        </div>
+                    </div>
+                    <div class="bg-dark-200 rounded-2xl p-6 border border-gray-800/50 hover:border-pink-500/20 transition-all group">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-pink-500/15 rounded-xl flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform"><span class="iconify text-pink-400 text-2xl" data-icon="mdi:instagram"></span></div>
+                            <div><h4 class="text-white font-semibold mb-1">Instagram</h4><a href="https://www.instagram.com/_healthy.snack_/" target="_blank" class="text-pink-400 text-sm hover:underline">@_healthy.snack_</a><p class="text-gray-500 text-xs mt-1">Follow untuk update terbaru</p></div>
+                        </div>
+                    </div>
+                    <div class="bg-dark-200 rounded-2xl p-6 border border-gray-800/50 hover:border-gold-500/20 transition-all group">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-gold-500/15 rounded-xl flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform"><span class="iconify text-gold-400 text-2xl" data-icon="mdi:map-marker"></span></div>
+                            <div><h4 class="text-white font-semibold mb-1">Alamat Toko</h4><p class="text-gray-400 text-sm">Kota Batu, Jawa Timur</p><a href="https://maps.app.goo.gl/8ezActRLJLNK4W4u6?g_st=ic" target="_blank" class="text-gold-400 text-xs hover:underline mt-1 inline-flex items-center gap-1">Buka di Google Maps <span class="iconify text-sm" data-icon="mdi:open-in-new"></span></a></div>
+                        </div>
+                    </div>
+                    <div class="bg-dark-200 rounded-2xl p-6 border border-gray-800/50 hover:border-gold-500/20 transition-all group">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-blue-500/15 rounded-xl flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform"><span class="iconify text-blue-400 text-2xl" data-icon="mdi:clock-outline"></span></div>
+                            <div><h4 class="text-white font-semibold mb-1">Jam Operasional</h4><p class="text-gray-400 text-sm">Senin - Sabtu: 08.00 - 17.00</p><p class="text-gray-400 text-sm">Minggu: 09.00 - 15.00</p><div class="flex items-center gap-1.5 mt-2"><span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span><span class="text-green-400 text-xs font-medium">Buka Sekarang</span></div></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:col-span-3">
+                    <div class="map-container h-full min-h-[400px] lg:min-h-[520px]">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31584.09!2d112.52898!3d-7.86671!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e785e0b95a3a5a7%3A0x4027a76e3530160!2sKota%20Batu%2C%20Batu%20City%2C%20East%20Java!5e0!3m2!1sid!2sid!4v1700000000000!5m2!1sid!2sid" width="100%" height="100%" style="border:0;min-height:400px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="rounded-2xl"></iframe>
+                    </div>
+                    <a href="https://maps.app.goo.gl/8ezActRLJLNK4W4u6?g_st=ic" target="_blank" class="mt-4 inline-flex items-center gap-2 text-gold-400 text-sm hover:underline">
+                        <span class="iconify" data-icon="mdi:navigation-variant"></span>
+                        Dapatkan petunjuk arah lengkap →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-gray-800/50 bg-dark-800">
+        <div class="py-10 text-center border-b border-gray-800/30">
+            <div class="flex items-center justify-center gap-3 mb-3">
+                <span class="text-3xl">👑</span>
+                <span class="font-display text-3xl font-bold gold-text tracking-wider">SNAPORA</span>
+            </div>
+            <p class="font-hand text-gold-400/60 text-lg">HEALTHY SNACK - Keripik Buah & Sayur Mix Premium</p>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div><h4 class="text-white font-semibold mb-4">SNAPORA</h4><p class="text-gray-500 text-sm leading-relaxed">Menghadirkan camilan sehat dari keripik buah dan sayur mix premium untuk gaya hidup lebih baik.</p></div>
+                <div><h4 class="text-white font-semibold mb-4">Menu</h4><ul class="space-y-2"><li><a href="#beranda" class="text-gray-500 text-sm hover:text-gold-400 transition-colors">Beranda</a></li><li><a href="#produk" class="text-gray-500 text-sm hover:text-gold-400 transition-colors">Produk</a></li><li><a href="#tentang" class="text-gray-500 text-sm hover:text-gold-400 transition-colors">Tentang Kami</a></li><li><a href="#testimoni" class="text-gray-500 text-sm hover:text-gold-400 transition-colors">Testimoni</a></li><li><a href="#lokasi" class="text-gray-500 text-sm hover:text-gold-400 transition-colors">Lokasi</a></li></ul></div>
+                <div><h4 class="text-white font-semibold mb-4">Produk Kami</h4><ul class="space-y-2"><li><span class="text-gray-500 text-sm">Mix Piring 100 gram</span></li><li><span class="text-gray-500 text-sm">Mix Pack 150 gram</span></li><li><span class="text-gray-500 text-sm">Paket Hemat 5 Pack</span></li></ul></div>
+                <div><h4 class="text-white font-semibold mb-4">Hubungi Kami</h4><ul class="space-y-3"><li class="flex items-center gap-2"><span class="iconify text-green-400" data-icon="mdi:whatsapp"></span><a href="https://wa.me/6282136265841" target="_blank" class="text-gray-500 text-sm hover:text-green-400 transition-colors">0821-3626-5841</a></li><li class="flex items-center gap-2"><span class="iconify text-pink-400" data-icon="mdi:instagram"></span><a href="https://www.instagram.com/_healthy.snack_/" target="_blank" class="text-gray-500 text-sm hover:text-pink-400 transition-colors">@_healthy.snack_</a></li><li class="flex items-center gap-2"><span class="iconify text-gold-400" data-icon="mdi:map-marker"></span><a href="https://maps.app.goo.gl/8ezActRLJLNK4W4u6?g_st=ic" target="_blank" class="text-gray-500 text-sm hover:text-gold-400 transition-colors">Kota Batu, Jawa Timur</a></li></ul></div>
+            </div>
+        </div>
+        <div class="border-t border-gray-800/30 py-6">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <p class="text-gray-600 text-xs">&copy; 2025 SNAPORA - Healthy Snack. All rights reserved.</p>
+                <div class="flex items-center gap-1 text-gray-600 text-xs"><span>Made with</span><span class="iconify text-red-500" data-icon="mdi:heart"></span><span>in Kota Batu</span></div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WA Float -->
+    <a href="https://wa.me/6282136265841?text=Halo%20SNAPORA,%20saya%20ingin%20order%20Healthy%20Snack" target="_blank" class="wa-float">
+        <div class="w-14 h-14 sm:w-16 sm:h-16 bg-green-500 rounded-full flex items-center justify-center shadow-xl shadow-green-500/30 hover:shadow-green-500/50 transition-shadow">
+            <span class="iconify text-white text-3xl sm:text-4xl" data-icon="mdi:whatsapp"></span>
+        </div>
+    </a>
+
+    <!-- Cart Float -->
+    <div id="cartFloat" class="fixed bottom-24 right-4 sm:right-6 z-[998] hidden">
+        <button onclick="showCart()" class="relative w-14 h-14 bg-dark-200 border border-gold-500/30 rounded-full flex items-center justify-center shadow-xl hover:shadow-gold-500/20 transition-all hover:scale-110">
+            <span class="iconify text-gold-400 text-2xl" data-icon="mdi:cart"></span>
+            <span id="cartBadge" class="absolute -top-1 -right-1 w-5 h-5 bg-gold-500 text-dark-900 text-[10px] font-bold rounded-full flex items-center justify-center">0</span>
+        </button>
+    </div>
+
+    <!-- Cart Modal -->
+    <div id="cartModal" class="fixed inset-0 z-[100] hidden">
+        <div class="absolute inset-0 bg-black/70 backdrop-blur-sm" onclick="hideCart()"></div>
+        <div class="absolute right-0 top-0 bottom-0 w-full max-w-md bg-dark-200 border-l border-gray-800/50 shadow-2xl transform translate-x-full transition-transform duration-500" id="cartPanel">
+            <div class="flex flex-col h-full">
+                <div class="flex items-center justify-between p-6 border-b border-gray-800/50">
+                    <div class="flex items-center gap-3"><span class="iconify text-gold-400 text-2xl" data-icon="mdi:cart"></span><h3 class="font-display text-xl font-bold text-white">Keranjang</h3></div>
+                    <button onclick="hideCart()" class="text-gray-400 hover:text-white transition-colors p-1"><span class="iconify text-2xl" data-icon="mdi:close"></span></button>
+                </div>
+                <div id="cartItems" class="flex-1 overflow-y-auto p-6">
+                    <div id="emptyCart" class="flex flex-col items-center justify-center h-full text-center"><span class="iconify text-gray-600 text-6xl mb-4" data-icon="mdi:cart-off"></span><p class="text-gray-500 text-sm">Keranjang masih kosong</p><p class="text-gray-600 text-xs mt-1">Yuk pilih Healthy Snack favoritmu!</p></div>
+                    <div id="cartList" class="space-y-4 hidden"></div>
+                </div>
+                <div id="cartFooter" class="p-6 border-t border-gray-800/50 hidden">
+                    <div class="flex items-center justify-between mb-4"><span class="text-gray-400 text-sm">Total</span><span id="cartTotal" class="text-gold-400 font-bold text-xl">Rp 0</span></div>
+                    <button onclick="checkoutAll()" class="w-full py-4 bg-gradient-to-r from-green-600 to-green-500 text-white font-bold rounded-xl hover:shadow-xl hover:shadow-green-500/25 transition-all flex items-center justify-center gap-2"><span class="iconify text-xl" data-icon="mdi:whatsapp"></span>Checkout via WhatsApp</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open')}
+        let cart=[];
+        function addToCart(n,p){const e=cart.find(i=>i.name===n);if(e)e.qty++;else cart.push({name:n,price:p,qty:1});updateCartUI();showToast(n+' ditambahkan!')}
+        function removeFromCart(i){cart.splice(i,1);updateCartUI();renderCart()}
+        function changeQty(i,d){cart[i].qty+=d;if(cart[i].qty<=0)cart.splice(i,1);updateCartUI();renderCart()}
+        function updateCartUI(){const t=cart.reduce((s,i)=>s+i.qty,0);document.getElementById('cartBadge').textContent=t;document.getElementById('cartFloat').classList.toggle('hidden',t===0)}
+        function renderCart(){const l=document.getElementById('cartList'),e=document.getElementById('emptyCart'),f=document.getElementById('cartFooter');if(!cart.length){l.classList.add('hidden');e.classList.remove('hidden');f.classList.add('hidden');return}e.classList.add('hidden');l.classList.remove('hidden');f.classList.remove('hidden');let total=0;l.innerHTML=cart.map((item,i)=>{const sub=item.price*item.qty;total+=sub;return`<div class="flex items-center gap-4 bg-dark-300 rounded-xl p-4 border border-gray-800/50"><div class="flex-1"><h4 class="text-white font-semibold text-sm">${item.name}</h4><p class="text-gold-400 text-sm font-medium">Rp ${item.price.toLocaleString('id-ID')}</p></div><div class="flex items-center gap-2"><button class="qty-btn" onclick="changeQty(${i},-1)">−</button><span class="text-white text-sm font-bold w-6 text-center">${item.qty}</span><button class="qty-btn" onclick="changeQty(${i},1)">+</button></div><div class="text-right min-w-[80px]"><p class="text-white text-sm font-bold">Rp ${sub.toLocaleString('id-ID')}</p></div><button onclick="removeFromCart(${i})" class="text-gray-600 hover:text-red-400 transition-colors"><span class="iconify text-lg" data-icon="mdi:delete-outline"></span></button></div>`}).join('');document.getElementById('cartTotal').textContent='Rp '+total.toLocaleString('id-ID')}
+        function showCart(){const m=document.getElementById('cartModal'),p=document.getElementById('cartPanel');m.classList.remove('hidden');renderCart();requestAnimationFrame(()=>{p.style.transform='translateX(0)'})}
+        function hideCart(){const p=document.getElementById('cartPanel');p.style.transform='translateX(100%)';setTimeout(()=>document.getElementById('cartModal').classList.add('hidden'),500)}
+        function checkoutAll(){if(!cart.length)return;let total=0;let items=cart.map(i=>{const s=i.price*i.qty;total+=s;return`• ${i.name} x${i.qty} = Rp ${s.toLocaleString('id-ID')}`}).join('\n');const msg=`Halo SNAPORA! 👋\n\nSaya ingin order HEALTHY SNACK:\n\n${items}\n\nTotal: Rp ${total.toLocaleString('id-ID')}\n\nMohon info ketersediaan dan ongkir. Terima kasih! 🙏`;window.open('https://wa.me/6282136265841?text='+encodeURIComponent(msg),'_blank')}
+        function orderProduct(n,p){const msg=`Halo SNAPORA! 👋\n\nSaya ingin order:\n• ${n} - Rp ${p.toLocaleString('id-ID')}\n\nMohon info ketersediaan dan ongkir. Terima kasih! 🙏`;window.open('https://wa.me/6282136265841?text='+encodeURIComponent(msg),'_blank')}
+        function showToast(m){const t=document.getElementById('toast');document.getElementById('toast-message').textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000)}
+        const obs=new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting){en.target.classList.add('animate-fade-in-up');obs.unobserve(en.target)}})},{threshold:0.1,rootMargin:'0px 0px -50px 0px'});
+        document.querySelectorAll('.product-card').forEach(el=>obs.observe(el));
+        window.addEventListener('scroll',()=>{document.querySelector('nav').style.boxShadow=window.pageYOffset>100?'0 4px 30px rgba(0,0,0,0.3)':'none'});
+    </script>
+</body>
+</html>
